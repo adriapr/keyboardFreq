@@ -1,4 +1,4 @@
-var inputElement = document.getElementById('hola-input')
+//var inputElement
 var keyPresses = [];
 var pairedKeys = [];
 var KPD = [];
