@@ -17,8 +17,9 @@ function updateKeyDuration() {
 }
 
 window.onload = function() {
-  inputElement = document.getElementById('hola-input')
 
+  inputElement = document.getElementById('hola-input')
+  console.log(inputElement)
 
   inputElement.addEventListener('keydown', function(event) {
     keyPresses.push([0, event.keyCode, event.timeStamp])
