@@ -3,6 +3,10 @@ var keyPresses = [];
 var pairedKeys = [];
 var KPD = [];
 
+window.onload = function() {
+  inputElement = document.getElementById('hola-input')
+}
+
 function updateKeyDuration() {
   for (ii = keyPresses.length-2; ii >= 0; ii--) {
     if (keyPresses[ii][0] == 0 && keyPresses[keyPresses.length - 1][1] == keyPresses[ii][1]) {
