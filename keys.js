@@ -1,3 +1,8 @@
+var inputElement = document.getElementById('hola-input')
+var keyPresses = [];
+var pairedKeys = [];
+var KPD = [];
+
 function updateKeyDuration() {
   for (ii = keyPresses.length-2; ii >= 0; ii--) {
     if (keyPresses[ii][0] == 0 && keyPresses[keyPresses.length - 1][1] == keyPresses[ii][1]) {
@@ -10,11 +15,6 @@ function updateKeyDuration() {
   console.log(KPD)
   output.innerHTML += KPD[KPD.length-1] + '<br>'
 }
-
-var inputElement = document.getElementById('hola-input')
-var keyPresses = [];
-var pairedKeys = [];
-var KPD = [];
 
 inputElement.addEventListener('keydown', function(event) {
   keyPresses.push([0, event.keyCode, event.timeStamp])
