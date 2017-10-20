@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<script type="text/javascript" src="keys.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<style>
+	.bar rect {
+	  fill: steelblue;
+	}
+	.bar text {
+	  fill: #fff;
+	  font: 10px sans-serif;
+	}
+	</style>
 </head>
 
 <body>
 	Text:
 	<input type="text" id="hola-input">
 	<button type="button" onclick="alert('Hello world!')">Finished</button>
+	
+	<svg width="960" height="500"></svg>
+
 	<div id="output"></div>
 </body>
+

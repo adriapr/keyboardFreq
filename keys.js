@@ -1,7 +1,7 @@
 //var inputElement
 var keyPresses = [];
 var pairedKeys = [];
-var KPD = [];
+var KPD = []; 
 
 function updateKeyDuration() {
   for (ii = keyPresses.length-2; ii >= 0; ii--) {
