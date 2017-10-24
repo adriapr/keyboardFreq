@@ -14,7 +14,7 @@ function plotHistogram() {
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3.scaleLinear()
-      .domain([-0.5, 200.5])
+      .domain([0, 200])
       // .domain(d3.extent(KPD))
       .range([0, width]);
 
@@ -39,11 +39,11 @@ function plotHistogram() {
     .data(bins)
     .enter().append("g")
       .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
+      .attr("transform", function(d) { return "translate(" + x((d.x0 + d.x1)/2) + "," + y(d.length) + ")"; });
 
   bar.append("rect")
-      .attr("x", 1)
-      .attr("width", x(bins[0].x1) - x(bins[0].x0))
+//      .attr("x", 1)
+      .attr("width", 1)
       .attr("height", function(d) { return height - y(d.length); });
 
   // var line = d3.area()
