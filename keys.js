@@ -26,7 +26,7 @@ function plotHistogram() {
       //.domain(x.domain())
       .domain([0,250])
       .thresholds(x.ticks(20))
-      (KPD);
+      (KPD_fraction);
 
   var y = d3.scaleLinear()
       .domain([0, d3.max(bins, function(d) { return d.length; })])
