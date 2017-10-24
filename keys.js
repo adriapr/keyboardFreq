@@ -70,15 +70,15 @@ function updateKeyDuration() {
       break;
     }
   }
-  console.log(pairedKeys)
-  console.log(KPD)
-  output.innerHTML += KPD[KPD.length-1] + '<br>'
+  // console.log(pairedKeys)
+  // console.log(KPD)
+  output.innerHTML += KPD[KPD.length-1] + ' | '
 }
 
 window.onload = function() {
 
   inputElement = document.getElementById('input-text')
-  console.log(inputElement)
+  // console.log(inputElement)
 
   inputElement.addEventListener('keydown', function(event) {
     keyPresses.push([0, event.keyCode, event.timeStamp])
