@@ -5,12 +5,6 @@ var KPD = [];
 
 function plotHistogram() {
 
-  KPD_fraction = [];
-  for (ii = 0; ii < keyPresses.length; ii++) {
-    KPD_fraction[ii] = KPD[ii] / 100;
-  } 
-
-
   var formatCount = d3.format(",.0f");
 
   var svg = d3.select("svg"),
@@ -20,12 +14,11 @@ function plotHistogram() {
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3.scaleLinear()
-      //.rangeRound([0, width]);
+      .domain([0, d3.max(KPD)])
       .rangeRound([0, width]);
 
   var bins = d3.histogram()
-      //.domain(x.domain())
-      .domain([0,250])
+      .domain(x.domain())
       .thresholds(x.ticks(20))
       (KPD);
 
@@ -38,6 +31,10 @@ function plotHistogram() {
     .enter().append("g")
       .attr("class", "bar")
       .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
 
   bar.append("rect")
       .attr("x", 1)
