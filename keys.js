@@ -42,7 +42,7 @@ function plotHistogram() {
   //     .attr("height", function(d) { return height - y(d.length); });
 
   var line = d3.area()
-      .x(function(d, i) { return x((bins[i][0] + bins[i][1]) / 2); })
+      .x(function(d, i) { return x((bins[i].x0 + bins[i].x1) / 2); })
       .y1(function(d) { return y(d)/2; })
       .y0(height)
 
