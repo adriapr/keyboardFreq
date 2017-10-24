@@ -14,13 +14,18 @@ function plotHistogram() {
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3.scaleLinear()
-      .domain([0, 200])
+      .domain([-0.5, 200.5])
       // .domain(d3.extent(KPD))
-      .rangeRound([0, width]);
+      .range([0, width]);
+
+  var binEdges = [];
+  for (ii = 0; ii < 202; ii++) {
+    binEdges[ii] = ii - 0.5
+  }
 
   var bins = d3.histogram()
       .domain(x.domain())
-      .thresholds(x.ticks(201))
+      .thresholds(binEdges)
       (KPD);
 
   console.log(bins);
