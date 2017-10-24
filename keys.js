@@ -11,6 +11,13 @@ function plotHistogram() {
       g = d.getElementsByTagName('body')[0],
       outerWidth = (w.innerWidth || e.clientWidth || g.clientWidth) - 30,
 
+  var svg = d3.select("#d3")
+    .append("svg")
+      .attr("width", outerWidth)
+      .attr("height", 300)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
   var formatCount = d3.format(",.0f");
 
   var svg = d3.select("svg"),
