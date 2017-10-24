@@ -23,27 +23,33 @@ function plotHistogram() {
       .thresholds(x.ticks(201))
       (KPD);
 
+  console.log(bins)
+
   var y = d3.scaleLinear()
       .domain([0, d3.max(bins, function(d) { return d.length; })])
       .range([height, 0]);
 
-  var bar = g.selectAll(".bar")
-    .data(bins)
-    .enter().append("g")
-      .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
+  // var bar = g.selectAll(".bar")
+  //   .data(bins)
+  //   .enter().append("g")
+  //     .attr("class", "bar")
+  //     .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
 
-  bar.append("rect")
-      .attr("x", 1)
-      .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
-      .attr("height", function(d) { return height - y(d.length); });
+  // bar.append("rect")
+  //     .attr("x", 1)
+  //     .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
+  //     .attr("height", function(d) { return height - y(d.length); });
 
-  // bar.append("text")
-  //     .attr("dy", ".75em")
-  //     .attr("y", 6)
-  //     .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
-  //     .attr("text-anchor", "middle")
-  //     .text(function(d) { return formatCount(d.length); });
+
+  var line = d3.svg.area()
+      .x(function(d, i) { return x(i); })
+      .y1(function(d) { return y(d); })
+      .y0(height)
+
+  svg.append("path")
+      .datum(bins)
+      .attr("class", "line")
+      .attr("d", line);
 
   g.append("g")
       .attr("class", "axis axis--y")
