@@ -9,7 +9,7 @@ function plotHistogram() {
       d = document,
       e = d.documentElement,
       g = d.getElementsByTagName('body')[0],
-      outerWidth = (w.innerWidth || e.clientWidth || g.clientWidth) - 30,
+      outerWidth = (w.innerWidth || e.clientWidth || g.clientWidth) - 30;
 
   var svg = d3.select("#d3")
     .append("svg")
