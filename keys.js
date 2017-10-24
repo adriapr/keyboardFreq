@@ -17,7 +17,8 @@ function plotHistogram() {
       .rangeRound([0, width]);
 
   var bins = d3.histogram()
-      .domain(x.domain())
+      //.domain(x.domain())
+      .domain([0,250])
       .thresholds(x.ticks(20))
       (KPD);
 
@@ -48,8 +49,6 @@ function plotHistogram() {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));  
 }
-
-
 
 function updateKeyDuration() {
   for (ii = keyPresses.length-2; ii >= 0; ii--) {
