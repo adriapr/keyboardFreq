@@ -20,13 +20,14 @@ function plotHistogram() {
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3.scaleLinear()
+      //.rangeRound([0, width]);
       .rangeRound([0, width]);
 
   var bins = d3.histogram()
       //.domain(x.domain())
       .domain([0,250])
       .thresholds(x.ticks(20))
-      (KPD_fraction);
+      (KPD);
 
   var y = d3.scaleLinear()
       .domain([0, d3.max(bins, function(d) { return d.length; })])
