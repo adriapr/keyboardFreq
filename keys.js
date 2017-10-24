@@ -5,40 +5,43 @@ var KPD = [];
 
 function plotHistogram() {
 
-  var w = window,
+  var formatCount = d3.format(",.0f"),
+      w = window,
       d = document,
       e = d.documentElement,
       g = d.getElementsByTagName('body')[0],
       outerWidth = (w.innerWidth || e.clientWidth || g.clientWidth) - 30;
+      margin = {top: 10, right: 10, bottom: 30, left: 30},
+      width = outerWidth - margin.left - margin.right,
+      outerHeight = 300,
+      height = outerHeight - margin.top - margin.bottom,
+      xMin = -0,
+      xMax = 200;
+
+  // remove previous plt, if any
+  d3.select("#d3").selectAll("svg").remove();
 
   var svg = d3.select("#d3")
     .append("svg")
-      .attr("width", outerWidth)
-      .attr("height", 300)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("width", width)
+      .attr("height", outerHeight)
 
-  var formatCount = d3.format(",.0f");
-
-  var svg = d3.select("svg"),
-      margin = {top: 10, right: 10, bottom: 30, left: 30},
-      width = outerWidth - margin.left - margin.right,
-      height = +svg.attr("height") - margin.top - margin.bottom,
-      g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+ 
 
   var x = d3.scaleLinear()
-      .domain([0, 200])
-      // .domain(d3.extent(KPD))
+      .domain([xMin, xMax])
       .range([0, width]);
 
   var binEdges = [];
-  for (ii = 0; ii < 202; ii++) {
-    binEdges[ii] = ii - 0.5
+  for (ii = 0; ii < xMax-xMin+1; ii++) {
+    binEdges[ii] = xMin + ii - 0.5
   }
 
   var bins = d3.histogram()
       .domain(x.domain())
       .thresholds(binEdges)
+      // ( [100, 100, 101, 103] );
       (KPD);
 
   console.log(bins);
@@ -52,11 +55,11 @@ function plotHistogram() {
     .data(bins)
     .enter().append("g")
       .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(" + x((d.x0 + d.x1)/2) + "," + y(d.length) + ")"; });
+      .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
 
   bar.append("rect")
 //      .attr("x", 1)
-      .attr("width", 1)
+      .attr("width", x(1) - x(0) )
       .attr("height", function(d) { return height - y(d.length); });
 
   // var line = d3.area()
