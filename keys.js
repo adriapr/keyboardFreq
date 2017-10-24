@@ -32,10 +32,6 @@ function plotHistogram() {
       .attr("class", "bar")
       .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
 
-    var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom")
-
   bar.append("rect")
       .attr("x", 1)
       .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
