@@ -46,10 +46,10 @@ function plotHistogram() {
   //     .y1(function(d, i) { return y(bins[i]); })
   //     .y0(height)
 
-  svg.append("path")
-      .datum(bins)
-      .attr("class", "line")
-      .attr("d", line);
+  // svg.append("path")
+  //     .datum(bins)
+  //     .attr("class", "line")
+  //     .attr("d", line);
 
   g.append("g")
       .attr("class", "axis axis--y")
