@@ -5,11 +5,17 @@ var KPD = [];
 
 function plotHistogram() {
 
+  var w = window,
+      d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName('body')[0],
+      outerWidth = (w.innerWidth || e.clientWidth || g.clientWidth) - 30,
+
   var formatCount = d3.format(",.0f");
 
   var svg = d3.select("svg"),
       margin = {top: 10, right: 10, bottom: 30, left: 30},
-      width = +svg.attr("width") - margin.left - margin.right,
+      width = outerWidth - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom,
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
