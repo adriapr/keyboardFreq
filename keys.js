@@ -30,21 +30,21 @@ function plotHistogram() {
       .domain([0, d3.max(bins, function(d) { return d.length; })])
       .range([height, 0]);
 
-  // var bar = g.selectAll(".bar")
-  //   .data(bins)
-  //   .enter().append("g")
-  //     .attr("class", "bar")
-  //     .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
+  var bar = g.selectAll(".bar")
+    .data(bins)
+    .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
 
-  // bar.append("rect")
-  //     .attr("x", 1)
-  //     .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
-  //     .attr("height", function(d) { return height - y(d.length); });
+  bar.append("rect")
+      .attr("x", 1)
+      .attr("width", x(bins[0].x1) - x(bins[0].x0))
+      .attr("height", function(d) { return height - y(d.length); });
 
-  var line = d3.area()
-      .x(function(d, i) { return x((bins[i].x0 + bins[i].x1) / 2); })
-      .y1(function(d, i) { return y(bins[i]); })
-      .y0(height)
+  // var line = d3.area()
+  //     .x(function(d, i) { return x((bins[i].x0 + bins[i].x1) / 2); })
+  //     .y1(function(d, i) { return y(bins[i]); })
+  //     .y0(height)
 
   svg.append("path")
       .datum(bins)
