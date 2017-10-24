@@ -25,7 +25,6 @@ function plotHistogram() {
 
   console.log(bins);
   console.log(bins[0]);
-  console.log(bins(0));
 
   var y = d3.scaleLinear()
       .domain([0, d3.max(bins, function(d) { return d.length; })])
