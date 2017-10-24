@@ -20,7 +20,7 @@ function plotHistogram() {
 
   var bins = d3.histogram()
       .domain(x.domain())
-      .thresholds(x.ticks(d3.max(KPD)))
+      .thresholds(x.ticks(251))
       (KPD);
 
   var y = d3.scaleLinear()
