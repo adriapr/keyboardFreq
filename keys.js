@@ -40,8 +40,7 @@ function plotHistogram() {
   //     .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
   //     .attr("height", function(d) { return height - y(d.length); });
 
-
-  var line = d3.svg.area()
+  var line = d3.area()
       .x(function(d, i) { return x(i); })
       .y1(function(d) { return y(d); })
       .y0(height)
