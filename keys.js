@@ -5,6 +5,12 @@ var KPD = [];
 
 function plotHistogram() {
 
+  KPD_fraction = [];
+  for (ii = 0; ii < keyPresses.length; ii++) {
+    KPD_fraction[ii] = KPD[ii] / 100;
+  } 
+
+
   var formatCount = d3.format(",.0f");
 
   var svg = d3.select("svg"),
