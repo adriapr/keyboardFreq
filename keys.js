@@ -14,8 +14,8 @@ function plotHistogram() {
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3.scaleLinear()
-      //.domain([0, d3.max(KPD)])
-      .domain(d3.extent(KPD))
+      .domain([0, 250])
+      // .domain(d3.extent(KPD))
       .rangeRound([0, width]);
 
   var bins = d3.histogram()
@@ -66,7 +66,7 @@ function updateKeyDuration() {
 
 window.onload = function() {
 
-  inputElement = document.getElementById('hola-input')
+  inputElement = document.getElementById('input-text')
   console.log(inputElement)
 
   inputElement.addEventListener('keydown', function(event) {
