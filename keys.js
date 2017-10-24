@@ -43,7 +43,7 @@ function plotHistogram() {
 
   var line = d3.area()
       .x(function(d, i) { return x((bins[i].x0 + bins[i].x1) / 2); })
-      .y1(function(d) { return y(d)/2; })
+      .y1(function(d, i) { return y(bins[i]); })
       .y0(height)
 
   svg.append("path")
