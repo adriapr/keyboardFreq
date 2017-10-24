@@ -8,19 +8,19 @@ function plotHistogram() {
   var formatCount = d3.format(",.0f");
 
   var svg = d3.select("svg"),
-      margin = {top: 10, right: 30, bottom: 30, left: 30},
+      margin = {top: 10, right: 10, bottom: 30, left: 30},
       width = +svg.attr("width") - margin.left - margin.right,
       height = +svg.attr("height") - margin.top - margin.bottom,
       g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var x = d3.scaleLinear()
-      .domain([0, 250])
+      .domain([0, 200])
       // .domain(d3.extent(KPD))
       .rangeRound([0, width]);
 
   var bins = d3.histogram()
       .domain(x.domain())
-      .thresholds(x.ticks(251))
+      .thresholds(x.ticks(201))
       (KPD);
 
   var y = d3.scaleLinear()
