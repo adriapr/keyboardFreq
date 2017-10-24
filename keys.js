@@ -24,6 +24,8 @@ function plotHistogram() {
       (KPD);
 
   console.log(bins)
+  console.log(bins[0][0])
+  console.log(bins[0][1])
 
   var y = d3.scaleLinear()
       .domain([0, d3.max(bins, function(d) { return d.length; })])
