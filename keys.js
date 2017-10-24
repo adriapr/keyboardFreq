@@ -47,7 +47,7 @@ function plotHistogram() {
 
   g.append("g")
       .attr("class", "axis axis--y")
-      .attr("transform", "translate("+padding+",0)")
+      // .attr("transform", "translate("+padding+",0)")
       .call(d3.axisLeft(y));
 
   g.append("g")
