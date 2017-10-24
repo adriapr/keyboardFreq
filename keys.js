@@ -38,12 +38,17 @@ function plotHistogram() {
       .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
       .attr("height", function(d) { return height - y(d.length); });
 
-  bar.append("text")
-      .attr("dy", ".75em")
-      .attr("y", 6)
-      .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
-      .attr("text-anchor", "middle")
-      .text(function(d) { return formatCount(d.length); });
+  // bar.append("text")
+  //     .attr("dy", ".75em")
+  //     .attr("y", 6)
+  //     .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
+  //     .attr("text-anchor", "middle")
+  //     .text(function(d) { return formatCount(d.length); });
+
+  g.append("g")
+      .attr("class", "axis axis--y")
+      .attr("transform", "translate("+padding+",0)")
+      .call(d3.axisLeft(y));
 
   g.append("g")
       .attr("class", "axis axis--x")
